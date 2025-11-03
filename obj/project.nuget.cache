@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "M4NLK2jYrsg=",
+  "success": true,
+  "projectFilePath": "/home/christian/Documents/Documents/projects/fractal/fractal.csproj",
+  "expectedPackageFiles": [
+    "/home/christian/.nuget/packages/sly/3.7.6/sly.3.7.6.nupkg.sha512",
+    "/home/christian/.nuget/packages/system.collections.immutable/9.0.10/system.collections.immutable.9.0.10.nupkg.sha512",
+    "/home/christian/.nuget/packages/system.text.json/9.0.10/system.text.json.9.0.10.nupkg.sha512",
+    "/home/christian/.nuget/packages/system.valuetuple/4.6.1/system.valuetuple.4.6.1.nupkg.sha512",
+    "/home/christian/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
