@@ -1,16 +1,17 @@
 using sly.parser.generator;
 using sly.parser;
+using fractal.src.ast;
 
 namespace fractal.src
 {
     public class GetFractal
     {
 
-        public static Parser<FractalToken, int> GetParser()
+        public static Parser<FractalToken, Node> GetParser()
         {
 
             var parserInstance = new FractalParser();
-            var builder = new ParserBuilder<FractalToken, int>();
+            var builder = new ParserBuilder<FractalToken, Node>();
             var Parser = builder.BuildParser(parserInstance, ParserType.LL_RECURSIVE_DESCENT, "expression").Result;
 
             return Parser;
@@ -27,7 +28,8 @@ namespace fractal.src
 
             if (!r.IsError)
             {
-                Console.WriteLine($"result of <{expression}>  is {(int)r.Result}");
+                Console.WriteLine($"result of <{expression}>  is {r.Result}");
+                Console.WriteLine($"resulting ast = {r.SyntaxTree.ToJson()}");
                 // outputs : result of <42 + 42>  is 84"
             }
             else
