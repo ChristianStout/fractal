@@ -13,6 +13,9 @@ namespace fractal.src
         [Lexeme("[-]")]
         MINUS,
 
+        [Lexeme(";")]
+        SEMICOLON,
+
         [Lexeme("[ \\t]+", isSkippable: true)] // the lexeme is marked isSkippable : it will not be sent to the parser and simply discarded.
         WS
     }

@@ -18,10 +18,5 @@ namespace fractal.src.ast
             leftChild = left;
             rightChild = right;
         }
-
-        public void accept(Visitor visitor)
-        {
-            visitor.visit(this);
-        }
     }
 }

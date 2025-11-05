@@ -9,4 +9,4 @@ Console.WriteLine("Hello, World! And me");
 var x = new fractal.src.SomeTest();
 Console.WriteLine("Parser successfully genreated");
 
-x.TestCSLY("1 + 3 - 4");
+x.TestCSLY("1 + 3 - 4;");

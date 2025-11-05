@@ -6,8 +6,10 @@ using sly;
 
 namespace fractal.src
 {
+    
     public class Lexer
     {
-        
+
     }
+    
 }

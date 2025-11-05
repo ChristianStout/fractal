@@ -9,6 +9,13 @@ namespace fractal.src
 {
     public class FractalParser
     {
+
+        [Production("root: expression SEMICOLON")]
+        public Node Root(Node node, Token<FractalToken> semicolon)
+        {
+            return new RootNode([]);
+        }
+
         [Production("expression: INT")]
         public NumNode intExpr(Token<FractalToken> intToken)
         {

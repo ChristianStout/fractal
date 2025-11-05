@@ -1,6 +1,8 @@
+using fractal.src.visitors;
+
 namespace fractal.src.ast
 {
-    public interface ExprNode : Node
+    public abstract class ExprNode : Node
     {
         
     }
