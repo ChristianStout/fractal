@@ -1,17 +1,16 @@
 
-using System.Runtime.InteropServices;
 using fractal.src.visitors;
 using sly.lexer;
 
 namespace fractal.src.ast
 {
-    public class NumNode : ExprNode
+    public class NumNode(Token<FractalToken> token) : ExprNode
     {
-        private Token<FractalToken> innerToken;
+        public Token<FractalToken> innerToken = token;
 
-        public NumNode(Token<FractalToken> token)
+        public override void Accept(IVisitor visitor)
         {
-            innerToken = token;
+            visitor.VisitNum(this);
         }
     }
 }

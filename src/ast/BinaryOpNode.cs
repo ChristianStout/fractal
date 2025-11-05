@@ -10,13 +10,20 @@ namespace fractal.src.ast
         public Token<FractalToken> innerToken;
         public NumNode leftChild;
         public ExprNode rightChild;
-        
+
 
         public BinaryOpNode(NumNode left, Token<FractalToken> token, ExprNode right)
         {
             innerToken = token;
             leftChild = left;
             rightChild = right;
+        }
+        
+        public override void Accept(IVisitor visitor)
+        {
+            leftChild.Accept(visitor);
+            visitor.VisitBinaryOp(this);
+            rightChild.Accept(visitor);
         }
     }
 }

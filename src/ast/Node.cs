@@ -13,10 +13,10 @@ namespace fractal.src.ast
         //     innerToken = token;
         // }
 
-        public void accept(Visitor visitor)
-        {
-            visitor.visit(this);
-        }
+        public abstract void Accept(IVisitor visitor);
+        // {
+        //     // visitor.Visit(this);
+        // }
 
         public void print()
         {

@@ -11,9 +11,9 @@ namespace fractal.src
     {
 
         [Production("root: expression SEMICOLON")]
-        public Node Root(Node node, Token<FractalToken> semicolon)
+        public Node Root(ExprNode node, Token<FractalToken> semicolon)
         {
-            return new RootNode([]);
+            return new RootNode([new ExprStmtNode(node)]);
         }
 
         [Production("expression: INT")]
