@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="csdot" Version="2.0.1" />
     <PackageReference Include="sly" Version="3.7.6" />
   </ItemGroup>
 
