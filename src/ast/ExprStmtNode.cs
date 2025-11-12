@@ -13,8 +13,12 @@ namespace fractal.src.ast
 
         public override void Accept(IVisitor visitor)
         {
+            visitor.PreVisitExprStmt(this);
+
             visitor.VisitExprStmt(this);
             expr.Accept(visitor);
+
+            visitor.PostVisitExprStmt(this);
         }
     }
 }

@@ -1,6 +1,7 @@
 
 using fractal.src.visitors;
 using sly.lexer;
+using src.parser;
 
 namespace fractal.src.ast
 {
@@ -10,7 +11,11 @@ namespace fractal.src.ast
 
         public override void Accept(IVisitor visitor)
         {
+            visitor.PreVisitNum(this);
+
             visitor.VisitNum(this);
+
+            visitor.PostVisit(this);
         }
     }
 }

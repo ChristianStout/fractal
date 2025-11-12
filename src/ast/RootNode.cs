@@ -2,19 +2,24 @@ using fractal.src.visitors;
 
 namespace fractal.src.ast
 {
-    public class RootNode(List<StmtNode> stmts) : Node
+    public class RootNode(NodeList stmts) : Node
     {
-        List<StmtNode> Children { get; set; } = stmts;
+        NodeList Children { get; set; } = stmts;
 
         public override void Accept(IVisitor visitor)
         {
+            visitor.PreVisitRoot(this);
+
             visitor.VisitRoot(this);
 
-            foreach (StmtNode child in Children)
-            {
-                child.Accept(visitor);
-            }
+            // foreach (StmtNode child in Children)
+            // {
+            //     child.Accept(visitor);
+            // }
 
+            Children.Accept(visitor);
+
+            visitor.PostVisitRoot(this);
         }
     }
 }

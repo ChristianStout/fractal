@@ -2,6 +2,7 @@
 using fractal.src.visitors;
 using sly.lexer;
 using sly.parser.generator;
+using src.parser;
 
 namespace fractal.src.ast
 {
@@ -18,12 +19,16 @@ namespace fractal.src.ast
             leftChild = left;
             rightChild = right;
         }
-        
+
         public override void Accept(IVisitor visitor)
         {
+            visitor.PreVisitBinaryOp(this);
+
             leftChild.Accept(visitor);
             visitor.VisitBinaryOp(this);
             rightChild.Accept(visitor);
+
+            visitor.PostVisitBinaryOp(this);
         }
     }
 }

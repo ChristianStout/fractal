@@ -2,16 +2,36 @@
 using fractal.src;
 using fractal.src.ast;
 using fractal.src.visitors;
+using sly.parser.generator;
+using sly.parser;
+using System.IO;
 
 Console.WriteLine("Hello, World! And me");
 
+
+
 var x = new SomeTest();
-Console.WriteLine("Parser successfully genreated");
+// Console.WriteLine("Parser successfully genreated");
 
-x.TestCSLY("1 + 3 - 4;");
+var file = File.ReadAllText("default.fractal");
 
-var parser = GetFractal.GetParser();
+x.TestCSLY(file);
 
-RootNode output = (RootNode)parser.Parse("1 + 2 - 3;").Result;
+// Console.WriteLine($"{parser.Result}");
 
-output.Accept(new PrintTreeVisitor());
+
+// var parser = GetFractal.GetParser();
+
+// // RootNode output = (RootNode)parser.Parse("1 + 2 - 3; 1;").Result;
+
+// // output.Accept(new PrintTreeVisitor());
+// var parserInstance = new TestParser();
+// var builder = new ParserBuilder<TestToken, int>();
+// var Parser = builder.BuildParser(parserInstance, ParserType.EBNF_LL_RECURSIVE_DESCENT, "root").Result;
+// // var Parser = builder.BuildParser(parserInstance, ParserType.LL_RECURSIVE_DESCENT, "root").Result;
+
+// var result = Parser.Parse("1");
+
+// Console.WriteLine($"result: {result}");
+
+// // return Parser;

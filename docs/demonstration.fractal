@@ -1,0 +1,79 @@
+// Fractal has top level statements
+// let statements can infer types
+let x = 0;
+
+// or they can be explicitly stated
+let y: i32 = 1;
+
+// variables are immutable by default. 
+// x = 1; // MutationError: `x` is not a mutable variables
+
+let mut z = 2;
+z = 3; // does not error
+
+
+// STRUCTS
+// _______
+
+// structs are the classes that fractal has
+struct Something {}
+
+// variables can be delcared with the struct types
+let something = Something {} // type = Something
+
+// structs can contain data
+struct Data {
+    x: i32,
+    f: f32,
+    s: Something, // even other structs
+}
+
+// structs are initialized similar to how they are defined
+let data = Data {
+    x: 0,
+    f: 1.0,
+    s: Something {}, // {} signifies the initiation
+}
+
+
+// TRAITS
+
+// fractal does not have inheritance. Instead, objects can implement
+// multiple `traits`
+
+trait Fun {
+    function is_fun(self) -> bool,
+}
+
+// we can `implement` traits onto structs
+implement Fun for Something {
+    function is_fun(self) -> bool {
+        print("yes i am very fun -_-");
+        return true;
+    }
+}
+
+something.is_fun() // output: "yes i am very fun -_-"
+
+// We can use traits as types, just like structs
+let fun: Fun = Something {} // does not error
+
+// we can take them into functions too
+
+
+// IMPORT
+
+// we can import files into our program. to do ths, we use the `import` keyword.
+import std::math;
+
+// `math` is a very common import. It has a lot of mathy things you can do.
+// for example, to get a random int, it's pretty easy:
+let randy = math.random_i32(); // randy: i32
+print(randy) // output: any possibe random i32 value
+
+let ranged0 = math.random_i32_ranged(0..16);
+print(ranged0) // output: a random number in [0, 16)
+let ranged1 = math.random_i32_ranged(0..=16);
+print(ranged1) // output: a random number in [0, 16]
+
+

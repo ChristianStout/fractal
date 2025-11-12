@@ -1,0 +1,16 @@
+
+    let r=1;
+    let mut i=1; 
+    r = r * i;
+    print(r);
+    print(i);
+    let i = i + 1;
+    if x == 0 {
+       print("it was zero");
+    };
+   if let r = 1 {
+      print("hi");
+   }
+   else {
+      print("wth");
+   };
