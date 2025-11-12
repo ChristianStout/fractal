@@ -17,13 +17,13 @@ namespace fractal.src
         }
 
         [Production("statement: expression SEMICOLON")]
-        public Node Statement(ExprNode node, Token<FractalToken> semicolon)
+        public StmtNode Statement(ExprNode node, Token<FractalToken> semicolon)
         {
             return new ExprStmtNode(node);
         }
 
         [Production("expression: INT")]
-        public Node intExpr(Token<FractalToken> intToken)
+        public ExprNode intExpr(Token<FractalToken> intToken)
         {
             return new NumNode(intToken);
         }
@@ -31,14 +31,14 @@ namespace fractal.src
 
         [Production("expression: term MINUS expression")]
         [Production("expression: term PLUS expression")]
-        public Node Expression(Node left, Token<FractalToken> operatorToken, Node right)
+        public ExprNode Expression(Node left, Token<FractalToken> operatorToken, Node right)
         {
             // Console.WriteLine($"Parsed expr - term [ PLUS | MINUS ] expression : {left} {operatorToken} {right}");
             return new BinaryOpNode(left, operatorToken, right);
         }
 
         [Production("term: INT")]
-        public Node Expression(Token<FractalToken> intToken)
+        public ExprNode Expression(Token<FractalToken> intToken)
         {
             // Console.WriteLine($"Parsed term INT : {intToken}");
             return new NumNode(intToken);
