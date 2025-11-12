@@ -1,6 +1,7 @@
 using sly.parser.generator;
 using sly.parser;
 using fractal.src.ast;
+using sly.buildresult;
 
 namespace fractal.src
 {
@@ -12,7 +13,14 @@ namespace fractal.src
 
             var parserInstance = new FractalParser();
             var builder = new ParserBuilder<FractalToken, Node>();
-            var Parser = builder.BuildParser(parserInstance, ParserType.EBNF_LL_RECURSIVE_DESCENT, "root").Result;
+            var built = builder.BuildParser(parserInstance, ParserType.EBNF_LL_RECURSIVE_DESCENT, "root");
+
+            foreach(InitializationError error in built.Errors)
+            {
+                Console.WriteLine(error.Message);
+            }
+
+            var Parser = built.Result;
 
             return Parser;
         }

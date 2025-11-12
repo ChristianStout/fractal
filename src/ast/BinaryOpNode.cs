@@ -8,11 +8,11 @@ namespace fractal.src.ast
     public class BinaryOpNode : ExprNode
     {
         public Token<FractalToken> innerToken;
-        public NumNode leftChild;
-        public ExprNode rightChild;
+        public Node leftChild;
+        public Node rightChild;
 
 
-        public BinaryOpNode(NumNode left, Token<FractalToken> token, ExprNode right)
+        public BinaryOpNode(Node left, Token<FractalToken> token, Node right)
         {
             innerToken = token;
             leftChild = left;
