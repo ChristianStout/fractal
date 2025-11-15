@@ -11,6 +11,7 @@ bin/Debug/net9.0/fractal.runtimeconfig.json
 bin/Debug/net9.0/sly.dll
 bin/Debug/net9.0/System.Collections.Immutable.dll
 bin/Debug/net9.0/System.Text.Json.dll
+bin/*
 obj/fractal.csproj.nuget.dgspec.json
 obj/fractal.csproj.nuget.g.props
 obj/fractal.csproj.nuget.g.targets

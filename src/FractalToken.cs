@@ -4,6 +4,12 @@ using sly.i18n;
 
 namespace fractal.src
 {
+
+    public enum FractalTokenPrec
+    {
+        Addition = 10,
+        Multiplication = 50,
+    }
     public enum FractalToken
     {
         [Lexeme("[0-9]+")]
@@ -12,6 +18,10 @@ namespace fractal.src
         PLUS,
         [Lexeme("[-]")]
         MINUS,
+        [Lexeme("[*]")]
+        TIMES,
+        [Lexeme("[/]")]
+        DIVIDE,
 
         [Lexeme(";")]
         SEMICOLON,

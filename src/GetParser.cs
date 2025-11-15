@@ -17,11 +17,10 @@ namespace fractal.src
 
             foreach(InitializationError error in built.Errors)
             {
-                Console.WriteLine(error.Message);
+                Console.WriteLine($"ERROR OCCURED: {error.Message}");
             }
 
             var Parser = built.Result;
-
             return Parser;
         }
 

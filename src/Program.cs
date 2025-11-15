@@ -8,10 +8,21 @@ Console.WriteLine("Hello, World! And me");
 var x = new SomeTest();
 Console.WriteLine("Parser successfully genreated");
 
-x.TestCSLY("1 + 3 - 4;");
+var fractal_file = "1 +  2 - 3; 4 * 5   + 6;";
+
+x.TestCSLY(fractal_file);
 
 var parser = GetFractal.GetParser();
 
-RootNode output = (RootNode)parser.Parse("1 + 2 - 3;").Result;
+RootNode output = (RootNode)parser.Parse(fractal_file).Result;
+var tree = parser.Parse(fractal_file).SyntaxTree;
+
+
+// var graphviz = new GraphVizEBNFSyntaxTreeVisitor<ExpressionToken>();
+// var root = graphviz.VisitTree(tree);
+// string graph = graphviz.Graph.Compile();
+// File.Delete("c:\\temp\\tree.dot");
+// File.AppendAllText("c:\\temp\\tree.dot", graph);
+
 
 output.Accept(new PrintTreeVisitor());

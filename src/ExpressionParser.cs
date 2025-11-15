@@ -1,15 +1,11 @@
 using sly.lexer;
 using sly.parser.generator;
-using System.Collections.Generic;
-using sly.parser.parser;
-using System.Reflection.Metadata.Ecma335;
 using fractal.src.ast;
 
 namespace fractal.src
 {
     public class FractalParser
     {
-
         [Production("root: statement*")]
         public Node Root(List<Node> nodes)
         {
@@ -29,14 +25,22 @@ namespace fractal.src
         }
 
 
+        [Operation((int)FractalToken.PLUS, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Addition)]
+        [Operation((int)FractalToken.MINUS, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Addition)]
+        [Operation((int)FractalToken.TIMES, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Multiplication)]
+        [Operation((int)FractalToken.DIVIDE, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Multiplication)]
+
         [Production("expression: term MINUS expression")]
         [Production("expression: term PLUS expression")]
+        [Production("expression: term TIMES expression")]
+        [Production("expression: term DIVIDE expression")]
         public ExprNode Expression(Node left, Token<FractalToken> operatorToken, Node right)
         {
             // Console.WriteLine($"Parsed expr - term [ PLUS | MINUS ] expression : {left} {operatorToken} {right}");
             return new BinaryOpNode(left, operatorToken, right);
         }
 
+        [Operand]
         [Production("term: INT")]
         public ExprNode Expression(Token<FractalToken> intToken)
         {
