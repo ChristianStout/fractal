@@ -18,7 +18,7 @@ RootNode output = (RootNode)parser.Parse(fractal_file).Result;
 var tree = parser.Parse(fractal_file).SyntaxTree;
 
 
-// var graphviz = new GraphVizEBNFSyntaxTreeVisitor<ExpressionToken>();
+// var graphviz = new GraphVizEBNFSyntaxTreeVisitor<FractalToken>();
 // var root = graphviz.VisitTree(tree);
 // string graph = graphviz.Graph.Compile();
 // File.Delete("c:\\temp\\tree.dot");

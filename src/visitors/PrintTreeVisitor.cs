@@ -1,42 +1,132 @@
+using System.ComponentModel;
+using System.Net.NetworkInformation;
 using fractal.src.ast;
+
+// ─ │ └─ ├─ ╰─
 
 namespace fractal.src.visitors
 {
-    public class PrintTreeVisitor : IVisitor
+    public class PrintTreeVisitor() : IVisitor
     {
+        private string tree = "";
+        private int indents = -1;
+
+        public override void PreVisitRoot(RootNode node) {
+            indents += 1;
+            addLines();
+        }
+
+        public override void PreVisit(Node node) {
+            indents += 1;
+            addLines();
+        }
+        public override void PreVisitStmt(StmtNode node) {
+            indents += 1;
+            addLines();
+        }
+        public override void PreVisitExpr(ExprNode node) {
+            indents += 1;
+            addLines();
+        }
+        public override void PreVisitExprStmt(ExprStmtNode node) {
+            indents += 1;
+            addLines();
+        }
+        public override void PreVisitNum(NumNode node) {
+            indents += 1;
+            addLines();
+        }
+        public override void PreVisitBinaryOp(BinaryOpNode node) {
+            indents += 1;
+            addLines();
+            tree += $"Visiting BinaryOpNode = {node.innerToken.Value}";
+        }
+        public override void PreVisitLetExprNode(LetExprNode node) {
+            indents += 1;
+            addLines();
+        }
+
+        // only nodes with children should `endChildren`
+        public override void PostVisit(Node node) {
+            indents -= 1;
+            tree += "\n";
+        }
+        public override void PostVisitRoot(RootNode node) {
+            indents -= 1;
+            endChildren();
+            Console.WriteLine(tree);
+        }
+        public override void PostVisitStmt(StmtNode node) {
+            indents -= 1;
+            // tree += "\n";
+        }
+        public override void PostVisitExpr(ExprNode node) {
+            indents -= 1;
+            // tree += "\n";
+        }
+        public override void PostVisitExprStmt(ExprStmtNode node) {
+            indents -= 1;
+            endChildren();
+        }
+        public override void PostVisitNum(NumNode node) {
+            indents -= 1;
+            // tree += "\n";
+        }
+        public override void PostVisitBinaryOp(BinaryOpNode node) {
+            indents -= 1;
+            endChildren();
+        }
+        public override void PostVisitLetExprNode(LetExprNode node) {
+            indents -= 1;
+            endChildren();
+        }
+
+
         public override void VisitRoot(RootNode node)
         {
-            Console.WriteLine("Visiting root");
+            tree += "root";
         }
 
         public override void VisitExprStmt(ExprStmtNode node)
         {
-            Console.WriteLine("Visiting ExprStmtNode");
+            tree += "exprStmt";
         }
 
         public override void VisitBinaryOp(BinaryOpNode node)
         {
-            Console.WriteLine($"Visiting BinaryOpNode = {node.innerToken.Value}");
         }
 
         public override void VisitNum(NumNode node)
         {
-            Console.WriteLine($"Visiting NumNode = {node.innerToken.Value}");
+            tree += $"Visiting NumNode = {node.innerToken.Value}";
         }
 
-        public override void Visit(Node node)
+        private void addLines()
         {
-            throw new NotImplementedException();
+            tree += '\n';
+            for (var i = 0; i < indents; i++)
+            {
+                if (i == indents - 1)
+                {
+                    tree += " ├─";
+                    return;
+                }
+                tree += " │ ";
+            }
         }
 
-        public override void VisitStmt(StmtNode node)
+        private void endChildren()
         {
-            throw new NotImplementedException();
-        }
-
-        public override void VisitExpr(ExprNode node)
-        {
-            throw new NotImplementedException();
+            char[] chars = tree.ToCharArray();
+            for (var i = tree.Length; i < 0; i--)
+            {
+                if (chars[i] == '├')
+                {
+                    chars[i] = '└';
+                    break;
+                }
+            }
+            tree = new string(chars);
         }
     }
 }
