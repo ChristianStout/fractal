@@ -8,9 +8,12 @@ Console.WriteLine("Hello, World! And me");
 var x = new SomeTest();
 Console.WriteLine("Parser successfully genreated");
 
-var fractal_file = "1 +  2 - 3; 4 * 5   + 6;";
+// var fractal_file = "1 +  2 - 3; 4 * 5   + 6;";
+string fractal_file = File.ReadAllText("default.fractal");
 
-x.TestCSLY(fractal_file);
+Console.WriteLine($"file: {fractal_file}");
+
+// x.TestCSLY(fractal_file);
 
 var parser = GetFractal.GetParser();
 

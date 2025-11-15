@@ -39,7 +39,7 @@ namespace fractal.src.visitors
         public override void PreVisitBinaryOp(BinaryOpNode node) {
             indents += 1;
             addLines();
-            tree += $"Visiting BinaryOpNode = {node.innerToken.Value}";
+            tree += $"Visiting BinaryOpNode({node.innerToken.Value})";
         }
         public override void PreVisitLetExprNode(LetExprNode node) {
             indents += 1;
@@ -98,7 +98,12 @@ namespace fractal.src.visitors
 
         public override void VisitNum(NumNode node)
         {
-            tree += $"Visiting NumNode = {node.innerToken.Value}";
+            tree += $"NumNode({node.innerToken.Value})";
+        }
+
+        public override void VisitLetExprNode(LetExprNode node)
+        {
+            tree += $"LetStmt";
         }
 
         private void addLines()

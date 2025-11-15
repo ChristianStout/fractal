@@ -32,7 +32,7 @@ namespace fractal.src
         [Lexeme("[a-zA-Z_][a-zA-Z0-9_]*")]
         ID,
 
-        [Lexeme("[ \\t]+", isSkippable: true)] // the lexeme is marked isSkippable : it will not be sent to the parser and simply discarded.
+        [Lexeme("[ \\t\\n]+", isSkippable: true)] // the lexeme is marked isSkippable : it will not be sent to the parser and simply discarded.
         WS
     }
 }
