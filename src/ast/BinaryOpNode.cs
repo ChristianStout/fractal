@@ -21,9 +21,13 @@ namespace fractal.src.ast
         
         public override void Accept(IVisitor visitor)
         {
+            visitor.PreVisitBinaryOp(this);
+
             leftChild.Accept(visitor);
             visitor.VisitBinaryOp(this);
             rightChild.Accept(visitor);
+
+            visitor.PostVisitBinaryOp(this);
         }
     }
 }

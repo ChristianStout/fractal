@@ -10,7 +10,9 @@ namespace fractal.src.ast
 
         public override void Accept(IVisitor visitor)
         {
+            visitor.PreVisitNum(this);
             visitor.VisitNum(this);
+            visitor.PostVisitNum(this);
         }
     }
 }

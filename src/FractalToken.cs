@@ -12,6 +12,8 @@ namespace fractal.src
     }
     public enum FractalToken
     {
+        [Lexeme("let")]
+        LET,
         [Lexeme("[0-9]+")]
         INT,
         [Lexeme("[+]")]
@@ -22,9 +24,13 @@ namespace fractal.src
         TIMES,
         [Lexeme("[/]")]
         DIVIDE,
-
+        [Lexeme("[=]")]
+        EQUALS,
         [Lexeme(";")]
         SEMICOLON,
+
+        [Lexeme("[a-zA-Z_][a-zA-Z0-9_]*")]
+        ID,
 
         [Lexeme("[ \\t]+", isSkippable: true)] // the lexeme is marked isSkippable : it will not be sent to the parser and simply discarded.
         WS

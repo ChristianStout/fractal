@@ -4,9 +4,11 @@ namespace fractal.src.ast
 {
     public abstract class ExprNode : Node
     {
-        // public override void Accept(IVisitor visitor)
-        // {
-            
-        // }
+        public override void Accept(IVisitor visitor)
+        {
+            visitor.PreVisitExpr(this);
+            visitor.VisitExpr(this);
+            visitor.PostVisitExpr(this);
+        }
     }
 }

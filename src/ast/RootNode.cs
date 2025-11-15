@@ -8,6 +8,7 @@ namespace fractal.src.ast
 
         public override void Accept(IVisitor visitor)
         {
+            visitor.PreVisitRoot(this);
             visitor.VisitRoot(this);
 
             foreach (Node child in Children)
@@ -15,6 +16,7 @@ namespace fractal.src.ast
                 child.Accept(visitor);
             }
 
+            visitor.PostVisitRoot(this);
         }
     }
 }

@@ -17,30 +17,5 @@ namespace fractal.src.ast
         // {
         //     // visitor.Visit(this);
         // }
-
-        public void print()
-        {
-            this.print_indents(0);
-        }
-
-        public void print_helper(int indents)
-        {
-            print_indents(indents);
-        }
-
-        public void print_indents(int indents)
-        {
-            string ws = "";
-            for (int i = 0; i < indents; i++)
-            {
-                if (i == indents - 1)
-                {
-                    ws += "└─ ";
-                    break;
-                }
-                ws += "│ ";
-            }
-            Console.Write(ws);
-        }
     }
 }

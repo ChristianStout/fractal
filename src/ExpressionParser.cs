@@ -18,17 +18,22 @@ namespace fractal.src
             return new ExprStmtNode(node);
         }
 
+        [Production("expression: LET ID EQUALS expression")]
+        public ExprNode LetExpr(Token<FractalToken> let, Token<FractalToken> id, Token<FractalToken> e, Node expr)
+        {
+            return new LetExprNode(id, expr);
+        }
+
         [Production("expression: INT")]
         public ExprNode intExpr(Token<FractalToken> intToken)
         {
             return new NumNode(intToken);
         }
 
-
-        [Operation((int)FractalToken.PLUS, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Addition)]
-        [Operation((int)FractalToken.MINUS, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Addition)]
-        [Operation((int)FractalToken.TIMES, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Multiplication)]
-        [Operation((int)FractalToken.DIVIDE, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Multiplication)]
+        // [Operation((int)FractalToken.PLUS, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Addition)]
+        // [Operation((int)FractalToken.MINUS, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Addition)]
+        // [Operation((int)FractalToken.TIMES, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Multiplication)]
+        // [Operation((int)FractalToken.DIVIDE, Affix.InFix, Associativity.Left, (int)FractalTokenPrec.Multiplication)]
 
         [Production("expression: term MINUS expression")]
         [Production("expression: term PLUS expression")]
@@ -40,7 +45,7 @@ namespace fractal.src
             return new BinaryOpNode(left, operatorToken, right);
         }
 
-        [Operand]
+        // [Operand]
         [Production("term: INT")]
         public ExprNode Expression(Token<FractalToken> intToken)
         {
