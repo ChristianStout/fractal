@@ -5,11 +5,11 @@ namespace fractal.src.ast;
 
 public class LetExprNode : ExprNode
 {
-    Token<FractalToken> id;
+    IdNode id;
     ExprNode expr;
     bool mutable;
 
-    public LetExprNode(Token<FractalToken> Id, Node Expr, bool Mutable = false)
+    public LetExprNode(IdNode Id, Node Expr, bool Mutable = false)
     {
         id = Id;
         expr = (ExprNode)Expr;
@@ -18,11 +18,12 @@ public class LetExprNode : ExprNode
 
     public override void Accept(IVisitor visitor)
     {
-        visitor.PreVisitLetExprNode(this);
-        visitor.VisitLetExprNode(this);
+        visitor.PreVisitLetExpr(this);
+        visitor.VisitLetExpr(this);
 
-        visitor.VisitExpr(expr);
+        id.Accept(visitor);
+        expr.Accept(visitor);
 
-        visitor.PostVisitLetExprNode(this);
+        visitor.PostVisitLetExpr(this);
     }
 }

@@ -41,7 +41,11 @@ namespace fractal.src.visitors
             addLines();
             tree += $"Visiting BinaryOpNode({node.innerToken.Value})";
         }
-        public override void PreVisitLetExprNode(LetExprNode node) {
+        public override void PreVisitLetExpr(LetExprNode node) {
+            indents += 1;
+            addLines();
+        }
+        public override void PreVisitId(IdNode node) {
             indents += 1;
             addLines();
         }
@@ -76,9 +80,12 @@ namespace fractal.src.visitors
             indents -= 1;
             endChildren();
         }
-        public override void PostVisitLetExprNode(LetExprNode node) {
+        public override void PostVisitLetExpr(LetExprNode node) {
             indents -= 1;
             endChildren();
+        }
+        public override void PostVisitId(IdNode node) {
+            indents -= 1;
         }
 
 
@@ -101,9 +108,13 @@ namespace fractal.src.visitors
             tree += $"NumNode({node.innerToken.Value})";
         }
 
-        public override void VisitLetExprNode(LetExprNode node)
+        public override void VisitLetExpr(LetExprNode node)
         {
             tree += $"LetStmt";
+        }
+        public override void VisitId(IdNode node)
+        {
+            tree += $"Id({node.id})";
         }
 
         private void addLines()

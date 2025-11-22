@@ -13,7 +13,8 @@ namespace fractal.src.visitors
         public virtual void PreVisitExprStmt(ExprStmtNode node) {}
         public virtual void PreVisitNum(NumNode node) {}
         public virtual void PreVisitBinaryOp(BinaryOpNode node) {}
-        public virtual void PreVisitLetExprNode(LetExprNode node) {}
+        public virtual void PreVisitLetExpr(LetExprNode node) {}
+        public virtual void PreVisitId(IdNode node) {}
 
         // MIDDLE VISIT METHODS
         public virtual void Visit(Node node) {}
@@ -23,7 +24,8 @@ namespace fractal.src.visitors
         public virtual void VisitExprStmt(ExprStmtNode node) {}
         public virtual void VisitNum(NumNode node) {}
         public virtual void VisitBinaryOp(BinaryOpNode node) {}
-        public virtual void VisitLetExprNode(LetExprNode node) {}
+        public virtual void VisitLetExpr(LetExprNode node) {}
+        public virtual void VisitId(IdNode node) {}
 
         // POST VISIT METHODS
         public virtual void PostVisit(Node node) {}
@@ -33,6 +35,7 @@ namespace fractal.src.visitors
         public virtual void PostVisitExprStmt(ExprStmtNode node) {}
         public virtual void PostVisitNum(NumNode node) {}
         public virtual void PostVisitBinaryOp(BinaryOpNode node) {}
-        public virtual void PostVisitLetExprNode(LetExprNode node) {}
+        public virtual void PostVisitLetExpr(LetExprNode node) {}
+        public virtual void PostVisitId(IdNode node) {}
     }
 }

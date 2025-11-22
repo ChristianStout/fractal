@@ -21,7 +21,7 @@ namespace fractal.src
         [Production("expression: LET ID EQUALS expression")]
         public ExprNode LetExpr(Token<FractalToken> let, Token<FractalToken> id, Token<FractalToken> e, Node expr)
         {
-            return new LetExprNode(id, expr);
+            return new LetExprNode(new IdNode(id.Value), expr);
         }
 
         [Production("expression: INT")]
