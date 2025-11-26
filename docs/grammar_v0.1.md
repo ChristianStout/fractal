@@ -5,7 +5,7 @@ expr    ::= <term>
           | <term> - <expr>
           | <term> * <expr>
           | <term> / <expr>
-          | let <id> = <expr>
+          | let <id> mut? = <expr>
           | <id> ( <expr> )
           | <str>
 term    ::= <num>

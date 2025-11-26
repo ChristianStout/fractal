@@ -1,6 +1,7 @@
 using sly.lexer;
 using sly.parser.generator;
 using fractal.src.ast;
+using System.Runtime.InteropServices;
 
 namespace fractal.src
 {
@@ -18,10 +19,11 @@ namespace fractal.src
             return new ExprStmtNode(node);
         }
 
-        [Production("expression: LET ID EQUALS expression")]
-        public ExprNode LetExpr(Token<FractalToken> let, Token<FractalToken> id, Token<FractalToken> e, Node expr)
+        [Production("expression: LET MUT? ID EQUALS expression")]
+        public ExprNode LetExpr(Token<FractalToken> let, Token<FractalToken> mut, Token<FractalToken> id, Token<FractalToken> e, Node expr)
         {
-            return new LetExprNode(new IdNode(id.Value), expr);
+            bool mutable = !mut.IsEmpty;
+            return new LetExprNode(new IdNode(id.Value), expr, mutable);
         }
 
         [Production("expression: INT")]

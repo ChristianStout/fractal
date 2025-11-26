@@ -14,6 +14,8 @@ namespace fractal.src
     {
         [Lexeme("let")]
         LET,
+        [Lexeme("mut")]
+        MUT,
         [Lexeme("[0-9]+")]
         INT,
         [Lexeme("[+]")]

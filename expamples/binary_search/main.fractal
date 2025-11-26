@@ -1,0 +1,17 @@
+import math;
+
+[derive(Debug, Default)]
+struct Solution;
+
+implement Solution {
+    function binary_search(list: List<i32>, value: i32) {
+        let mut left = 0;
+        let mut right = list.length() - 1;
+
+
+    }
+}
+
+function main() {
+    let s = Solution::default();
+}

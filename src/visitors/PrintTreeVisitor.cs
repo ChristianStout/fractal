@@ -111,6 +111,9 @@ namespace fractal.src.visitors
         public override void VisitLetExpr(LetExprNode node)
         {
             tree += $"LetStmt";
+            if (node.mutable) {
+                tree += " [MUTABLE]";
+            }
         }
         public override void VisitId(IdNode node)
         {

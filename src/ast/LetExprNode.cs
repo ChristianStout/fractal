@@ -5,9 +5,9 @@ namespace fractal.src.ast;
 
 public class LetExprNode : ExprNode
 {
-    IdNode id;
-    ExprNode expr;
-    bool mutable;
+    public IdNode id;
+    public ExprNode expr;
+    public bool mutable;
 
     public LetExprNode(IdNode Id, Node Expr, bool Mutable = false)
     {
